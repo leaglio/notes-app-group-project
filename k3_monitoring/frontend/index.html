@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K3 Guardian | PPE Compliance Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">🛡️</span>
+                <h1>K3 Guardian</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><i class="fas fa-chart-line"></i> Dashboard</li>
+                    <li><i class="fas fa-video"></i> Live Feeds</li>
+                    <li><i class="fas fa-history"></i> Violation Logs</li>
+                    <li><i class="fas fa-file-alt"></i> Compliance Reports</li>
+                    <li><i class="fas fa-cog"></i> Settings</li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Admin+K3" alt="User">
+                <div class="user-info">
+                    <p class="name">Admin K3</p>
+                    <p class="role">Safety Officer</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div class="header-title">
+                    <h2>Operational Dashboard</h2>
+                    <p>Real-time PPE Compliance Monitoring</p>
+                </div>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search workers...">
+                    </div>
+                    <div class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon workers"><i class="fas fa-users"></i></div>
+                    <div class="stat-info">
+                        <p class="label">Active Workers</p>
+                        <h3 id="active-workers">12</h3>
+                    </div>
+                    <div class="stat-trend up">+2 since 8am</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon compliance"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-info">
+                        <p class="label">Compliance Rate</p>
+                        <h3 id="compliance-rate">94.2%</h3>
+                    </div>
+                    <div class="stat-trend down">-1.2% today</div>
+                </div>
+                <div class="stat-card alert">
+                    <div class="stat-icon violations"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="stat-info">
+                        <p class="label">Violations Detected</p>
+                        <h3 id="violation-count">4</h3>
+                    </div>
+                    <div class="stat-trend">Needs Attention</div>
+                </div>
+            </section>
+
+            <!-- Monitoring Area -->
+            <div class="monitoring-grid">
+                <div class="video-feed-container">
+                    <div class="feed-header">
+                        <h3>CCTV Feed: Sector 4A</h3>
+                        <span class="live-indicator">LIVE</span>
+                    </div>
+                    <div class="video-placeholder" id="video-container">
+                        <video id="webcam" autoplay playsinline muted style="width: 100%; border-radius: 0.75rem;"></video>
+                        <canvas id="detection-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
+                        <div class="controls-overlay" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 20;">
+                            <button id="start-btn" style="background: var(--accent-blue); color: var(--bg-color); border: none; padding: 8px 20px; border-radius: 99px; font-weight: 700; cursor: pointer;">
+                                <i class="fas fa-play"></i> START CAMERA
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="logs-container">
+                    <div class="container-header">
+                        <h3>Recent Violations</h3>
+                        <button class="view-all">View All</button>
+                    </div>
+                    <div class="log-list" id="violation-logs">
+                        <!-- Logs will be injected here -->
+                        <div class="log-item warning">
+                            <div class="log-time">12:40 PM</div>
+                            <div class="log-details">
+                                <p class="log-msg"><strong>No Helmet</strong> - Worker #102</p>
+                                <p class="log-loc">Zone A - Main Entrance</p>
+                            </div>
+                            <div class="log-action"><button>Review</button></div>
+                        </div>
+                        <div class="log-item info">
+                            <div class="log-time">12:35 PM</div>
+                            <div class="log-details">
+                                <p class="log-msg"><strong>Vest Detected</strong> - Worker #089</p>
+                                <p class="log-loc">Zone B - Scaffold</p>
+                            </div>
+                            <div class="log-status compliant">Verified</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

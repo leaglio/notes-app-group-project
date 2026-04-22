@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+sqlalchemy
+ultralytics
+opencv-python
+roboflow
+python-multipart
+jinja2
